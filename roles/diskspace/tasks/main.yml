@@ -1,0 +1,40 @@
+---
+- name: Check for a supported Operating System
+  assert:
+    that:
+      - (ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial') or
+        (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7') or
+        (ansible_distribution == "MacOSX" and {{ ansible_distribution_version | version_compare('10.11', '>=') }})
+    msg: "The only supported platforms for this release are Ubuntu 16.04 LTS (Xenial) and CentOS 7 (WIP)"
+
+- name: Identify the space available in /
+  # NOTE: df does not work reliably on btrfs filesystems
+  # https://btrfs.wiki.kernel.org/index.php/FAQ#How_much_free_space_do_I_have.3F
+  # As such, use the btrfs tools to determine the real available size on the
+  # disk
+  shell: |
+    if [[ $(df -T / | tail -n 1 | awk '{print $2}') == "btrfs" ]]; then
+        btrfs fi usage --kbytes / | awk '/^.*Free / {print $3}'| sed 's/\..*//'
+    elif [[ ${OSTYPE} == "linux*" ]]; then
+        df -BK -P / | awk '!/^Filesystem/ {print $4}' | sed 's/K//'
+    else
+        df -k -P / | awk '!/^Filesystem/ {print $4}'
+    fi
+  changed_when: false
+  register: root_space_available
+
+# Convert root_space_available to bytes.
+- name: Set root disk facts
+  set_fact:
+    host_root_space_available_bytes: "{{ (root_space_available.stdout | int) * 1024 | int }}"
+
+# Convert bootstrap_host_data_disk_min_size to bytes.
+- name: Set min size fact
+  set_fact:
+    host_data_disk_min_size_bytes: "{{ ((bootstrap_host_data_disk_min_size | int) * 1024**3) | int }}"
+
+- name: Fail if there is not enough space available in /
+  assert:
+    that: |
+      (host_root_space_available_bytes | int) >= (host_data_disk_min_size_bytes | int)
+

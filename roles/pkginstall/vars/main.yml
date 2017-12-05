@@ -1,0 +1,2 @@
+---
+vagrant_url_rpm: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ ansible_architecture }}.rpm"

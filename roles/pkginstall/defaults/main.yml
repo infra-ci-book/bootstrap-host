@@ -1,0 +1,5 @@
+---
+vagrant_version: "2.0.1"
+vagrant_checksum_sha256: "df28c4ba7420dc6983955cf3af66dddddd892ad852154e9b9dbcd1acbebc083c"
+vagrant_tmp_dir: "/tmp/vagrant_downloads"
+vagrant_tmp_rpm: "{{ vagrant_tmp_dir }}/vagrant_{{ vagrant_version }}_{{ ansible_architecture }}.rpm"

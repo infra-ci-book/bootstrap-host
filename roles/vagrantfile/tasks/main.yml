@@ -1,0 +1,12 @@
+---
+- name: Ensure Vagrantfile directory exist
+  file:
+    state: directory
+    path: "{{ vagrantfile_dir }}"
+
+- name: Deploy Vagraltfile
+  template:
+    src: "Vagrantfile.j2"
+    dest: "{{ vagrantfile_dir }}/Vagrantfile"
+    mode: "0644"
+
