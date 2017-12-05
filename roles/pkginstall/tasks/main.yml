@@ -11,11 +11,17 @@
     state: present
     reload: yes
 
+- name: check firewalld is installed or not
+  shell: which firewalld
+  register: result
+  ignore_errors: True
+
 - name: Stop and disable firewalld.
   service:
     name: firewalld
     state: stopped
     enabled: False
+  when: result | success
 
 - name: Ensure temp download directory exist
   file:
