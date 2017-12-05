@@ -13,6 +13,7 @@
   # As such, use the btrfs tools to determine the real available size on the
   # disk
   shell: |
+    export LANG=C
     if [[ $(df -T / | tail -n 1 | awk '{print $2}') == "btrfs" ]]; then
         btrfs fi usage --kbytes / | awk '/^.*Free / {print $3}'| sed 's/\..*//'
     elif [[ ${OSTYPE} == "linux*" ]]; then
