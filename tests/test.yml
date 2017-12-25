@@ -1,0 +1,13 @@
+---
+- name: Test playbook for running on Travis CI
+  hosts: all
+  become: True
+  vars:
+    # Default root partition size of container is 10GB.
+    bootstrap_host_data_disk_min_size: 5
+    # Use the directory suited for docker container.
+    vagrantfile_dir: "/root/vagrant/infraci"
+  roles:
+    - diskspace
+    - pkginstall
+    - vagrantfile
