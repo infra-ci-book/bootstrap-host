@@ -11,14 +11,15 @@
   # As such, use the btrfs tools to determine the real available size on the
   # disk
   shell: |
-    export LANG=C
     if [[ $(df -T / | tail -n 1 | awk '{print $2}') == "btrfs" ]]; then
-        btrfs fi usage --kbytes / | awk '/^.*Free / {print $3}'| sed 's/\..*//'
+      btrfs fi usage --kbytes / | awk '/^.*Free / {print $3}'| sed 's/\..*//'
     elif [[ ${OSTYPE} == "linux*" ]]; then
-        df -BK -P / | awk '!/^Filesystem/ {print $4}' | sed 's/K//'
+      df -BK -P / | awk '!/^Filesystem/ {print $4}' | sed 's/K//'
     else
-        df -k -P / | awk '!/^Filesystem/ {print $4}'
+      df -k -P / | awk '!/^Filesystem/ {print $4}'
     fi
+  environment:
+    LANG: C
   changed_when: false
   register: root_space_available
 
