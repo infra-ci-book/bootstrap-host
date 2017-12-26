@@ -8,8 +8,6 @@
 #   - cleanup: whether to remove the Docker container (default = true)
 #   - container_id: the --name to set for the container (default = timestamp)
 #   - test_idempotence: whether to test playbook's idempotence (default = true)
-#
-# License: MIT
 
 # Exit on any individual command failure.
 set -e
