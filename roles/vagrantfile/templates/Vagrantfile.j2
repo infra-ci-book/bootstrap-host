@@ -6,29 +6,13 @@ Vagrant.configure("2") do |config|
     vb.memory = "{{ vagrant_box_memory }}"
   end
 
-  N = 2
-  (1..N).each do |machine_id|
-    config.vm.define "machine#{machine_id}" do |machine|
-      #machine.vm.hostname = "machine#{machine_id}"
-      machine.vm.network "private_network", ip: "192.168.33.#{20+machine_id}"
+  config.vm.define "gitlab-docker" do |machine|
+    machine.vm.hostname = "gitlab-docker"
+    machine.vm.network "private_network", ip: "192.168.33.10"
+  end
 
-      if machine_id == 1
-        machine.vm.hostname = "gitlab-docker"
-        machine.vm.provision "ansible" do |ansible|
-          ansible.playbook = "provisioning/gitlab.yml"
-          ansible.inventory_path = "provisioning/hosts"
-          ansible.limit = 'all'
-        end
-      end
-
-      if machine_id == 2
-        machine.vm.hostname = "ponzu"
-        machine.vm.provision "ansible" do |ansible|
-          ansible.playbook = "provisioning/ponzu.yml"
-          ansible.inventory_path = "provisioning/hosts"
-          ansible.limit = 'all'
-        end
-      end
-    end
+  config.vm.define "ponzu" do |machine|
+    machine.vm.hostname = "ponzu"
+    machine.vm.network "private_network", ip: "192.168.33.11"
   end
 end
