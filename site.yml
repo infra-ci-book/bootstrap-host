@@ -1,0 +1,5 @@
+---
+- import_playbook: diskspace.yml
+- import_playbook: pkginstall.yml
+- import_playbook: vagrantfile.yml
+- import_playbook: virtualbox.yml

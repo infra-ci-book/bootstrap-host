@@ -1,0 +1,7 @@
+---
+- name: install virtualbox
+  gather_facts: False
+  hosts: "vagrant"
+  become: True
+  roles:
+    - virtualbox
