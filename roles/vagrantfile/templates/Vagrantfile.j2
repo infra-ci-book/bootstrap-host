@@ -44,21 +44,21 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "test-ketchup" do |machine|
     machine.vm.hostname = "test-ketchup"
-    machine.vm.network "private_network", ip: "{{ test-ketchup_ip }}"
+    machine.vm.network "private_network", ip: "{{ test_ketchup_ip }}"
 
     machine.vm.provider "virtualbox" do |vbox|
-        vbox.cpus = {{ test-ketchup_cpus }}
-        vbox.memory = {{ test-ketchup_memory }}
+        vbox.cpus = {{ test_ketchup_cpus }}
+        vbox.memory = {{ test_ketchup_memory }}
     end
   end
 
   config.vm.define "test-ketchup-nginx" do |machine|
     machine.vm.hostname = "test-ketchup-nginx"
-    machine.vm.network "private_network", ip: "{{ test-ketchup_nginx_ip }}"
+    machine.vm.network "private_network", ip: "{{ test_ketchup_nginx_ip }}"
 
     machine.vm.provider "virtualbox" do |vbox|
-        vbox.cpus = {{ test-ketchup_nginx_cpus }}
-        vbox.memory = {{ test-ketchup_nginx_memory }}
+        vbox.cpus = {{ test_ketchup_nginx_cpus }}
+        vbox.memory = {{ test_ketchup_nginx_memory }}
     end
   end
 end

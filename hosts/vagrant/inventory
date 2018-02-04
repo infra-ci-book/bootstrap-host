@@ -25,11 +25,11 @@ ketchup_nginx_cpus=1
 ketchup_nginx_memory=1024
 
 # Specification for test-ketchup host
-test-ketchup_ip=192.168.33.14
-test-ketchup_cpus=1
-test-ketchup_memory=1024
+test_ketchup_ip=192.168.33.14
+test_ketchup_cpus=1
+test_ketchup_memory=1024
 
 # Specification for test-ketchup-nginx host
-test-ketchup_nginx_ip=192.168.33.15
-test-ketchup_nginx_cpus=1
-test-ketchup_nginx_memory=1024
+test_ketchup_nginx_ip=192.168.33.15
+test_ketchup_nginx_cpus=1
+test_ketchup_nginx_memory=1024
