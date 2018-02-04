@@ -1,2 +1,25 @@
 [vagrant]
-127.0.0.1 ansible_connection=local
+127.0.0.1
+
+[vagrant:vars]
+ansible_connection=local
+
+# Specification for gitlab host
+gitlab_ip=192.168.33.10
+gitlab_cpus=1
+gitlab_memory=2048
+
+# Specification for gitlab-runner host
+gitlab_runner_ip=192.168.33.11
+gitlab_runner_cpus=1
+gitlab_runner_memory=2048
+
+# Specification for ketchup host
+ketchup_ip=192.168.33.12
+ketchup_cpus=1
+ketchup_memory=2048
+
+# Specification for ketchup-nginx host
+ketchup_nginx_ip=192.168.33.13
+ketchup_nginx_cpus=1
+ketchup_nginx_memory=2048
