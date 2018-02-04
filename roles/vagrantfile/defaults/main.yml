@@ -2,4 +2,3 @@
 vagrantfile_dir: "~/vagrant/infraci"
 vagrant_box: "centos/7"
 vagrant_box_version: "1710.01"
-vagrant_box_memory: "4096"
