@@ -7,11 +7,17 @@
     state: present
     reload: yes
 
+- name: Check if service exists
+  stat:
+    path: /usr/lib/systemd/system/firewalld.service
+  register: service_status
+
 - name: Stop and disable firewalld
   service:
     name: firewalld
     state: stopped
     enabled: no
+  when: service_status.stat.exists
 
 - name: Ensure temp download directory exist
   file:
