@@ -4,6 +4,10 @@
 [vagrant:vars]
 ansible_connection=local
 
+# Define Vagrant version
+vagrant_version: "2.0.1"
+vagrant_checksum_sha256: "df28c4ba7420dc6983955cf3af66dddddd892ad852154e9b9dbcd1acbebc083c"
+
 # Specification for gitlab host
 gitlab_ip=192.168.33.10
 gitlab_cpus=1
