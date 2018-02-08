@@ -7,6 +7,12 @@
     state: present
     reload: yes
 
+- name: Stop and disable firewalld
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+
 - name: Ensure temp download directory exist
   file:
     state: directory
