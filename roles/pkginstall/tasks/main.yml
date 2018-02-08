@@ -10,6 +10,7 @@
 - name: Check if service exists
   stat:
     path: /usr/lib/systemd/system/firewalld.service
+  ignore_errors: yes
   register: service_status
 
 - name: Stop and disable firewalld
