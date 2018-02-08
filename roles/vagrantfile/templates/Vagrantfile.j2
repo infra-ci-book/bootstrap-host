@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ketchup" do |machine|
     machine.vm.hostname = "ketchup"
     machine.vm.network "private_network", ip: "{{ ketchup_ip }}"
+    config.vm.network "forwarded_port", guest: 80, host: 8082
 
     machine.vm.provider "virtualbox" do |vbox|
         vbox.cpus = {{ ketchup_cpus }}
@@ -35,6 +36,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "ketchup-nginx" do |machine|
     machine.vm.hostname = "ketchup-nginx"
     machine.vm.network "private_network", ip: "{{ ketchup_nginx_ip }}"
+    config.vm.network "forwarded_port", guest: 80, host: 8083
 
     machine.vm.provider "virtualbox" do |vbox|
         vbox.cpus = {{ ketchup_nginx_cpus }}
@@ -45,6 +47,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "test-ketchup" do |machine|
     machine.vm.hostname = "test-ketchup"
     machine.vm.network "private_network", ip: "{{ test_ketchup_ip }}"
+    config.vm.network "forwarded_port", guest: 80, host: 8084
 
     machine.vm.provider "virtualbox" do |vbox|
         vbox.cpus = {{ test_ketchup_cpus }}
@@ -55,6 +58,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "test-ketchup-nginx" do |machine|
     machine.vm.hostname = "test-ketchup-nginx"
     machine.vm.network "private_network", ip: "{{ test_ketchup_nginx_ip }}"
+    config.vm.network "forwarded_port", guest: 80, host: 8085
 
     machine.vm.provider "virtualbox" do |vbox|
         vbox.cpus = {{ test_ketchup_nginx_cpus }}
