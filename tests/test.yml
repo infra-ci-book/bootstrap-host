@@ -10,4 +10,6 @@
   roles:
     - diskspace
     - pkginstall
+    - virtualbox
+    - vagrant
     - vagrantfile
