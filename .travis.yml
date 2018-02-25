@@ -15,7 +15,7 @@ script:
   # Run tests.
   - ${PWD}/tests/test.sh
 
-  # Ensure Vagrant is installed.
+  # Ensure VirtualBox and Vagrant are installed.
   - 'docker exec --tty ${container_id} env TERM=xterm which virtualbox'
   - 'docker exec --tty ${container_id} env TERM=xterm which vagrant'
   - 'docker exec --tty ${container_id} env TERM=xterm ls /root/vagrant/infraci/Vagrantfile'
