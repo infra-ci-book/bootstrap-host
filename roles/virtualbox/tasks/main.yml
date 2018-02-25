@@ -1,6 +1,6 @@
 ---
 - name: Checking VirtualBox is installed or not
-  command: which virtualbox
+  shell: which virtualbox
   register: result
   changed_when: False
   ignore_errors: True
@@ -13,7 +13,7 @@
       dest: /etc/yum.repos.d/virtualbox.repo
 
   - name: Cleanup repo caches
-    command: |
+    shell: |
       yum clean all
       yum repolist
 
@@ -30,7 +30,7 @@
         state: latest
 
   - name: Install additional packages
-    command: yum install -y kernel-devel-`uname -r`
+    shell: yum install -y kernel-devel-`uname -r`
     when:
     - run_install_kernel_devel
 
