@@ -1,0 +1,22 @@
+---
+- name: Ensure temp download directory exist
+  file:
+    state: directory
+    path: "{{ vagrant_tmp_dir }}"
+
+- name: Download vagrant
+  get_url:
+    url: "{{ vagrant_url_rpm }}"
+    dest: "{{ vagrant_tmp_rpm }}"
+    checksum: "sha256:{{ vagrant_checksum_sha256 }}"
+
+- name: Install list of packages (RHEL/CentOS)
+  yum:
+    name: "{{ item }}"
+    state: present
+  register: install_packages
+  until: install_packages|success
+  retries: 5
+  delay: 2
+  with_items:
+    - "{{ vagrant_tmp_rpm }}"

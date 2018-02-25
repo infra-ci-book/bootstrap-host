@@ -1,7 +1,7 @@
 ---
-- name: Deploy Vagrantfile
+- name: Install Vagrant
   gather_facts: True
   hosts: "vagrant"
   become: False
   roles:
-    - vagrantfile
+    - vagrant
