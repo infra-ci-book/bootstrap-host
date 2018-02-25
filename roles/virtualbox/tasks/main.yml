@@ -1,5 +1,5 @@
 ---
-- name: checking virtualbox is installed or not
+- name: Checking VirtualBox is installed or not
   command: which virtualbox
   register: result
   changed_when: False
@@ -7,17 +7,17 @@
 
 - block:
 
-  - name: add virtualbox repo file
+  - name: Add VirtualBox repo file
     get_url:
       url: http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
       dest: /etc/yum.repos.d/virtualbox.repo
 
-  - name: cleanup repo caches
+  - name: Cleanup repo caches
     command: |
       yum clean all
       yum repolist
 
-  - name: install dependency packages
+  - name: Install dependency packages
     yum:
       name: "{{ item.name }}"
       state: "{{ item.state }}"
@@ -29,17 +29,17 @@
       - name: kernel-headers
         state: latest
 
-  - name: install additional packages
+  - name: Install additional packages
     command: yum install -y kernel-devel-`uname -r`
     when:
     - run_install_kernel_devel
 
-  - name: install virtualbox
+  - name: Install VirtualBox
     yum:
       name: "{{ virtualbox_pkgname }}"
       state: "{{ virtualbox_version }}"
 
-  - name: initialize virtualbox
+  - name: Initialize VirtualBox
     command: /sbin/vboxconfig
 
   when: result | failed
