@@ -7,6 +7,8 @@
     bootstrap_host_data_disk_min_size: 5
     # Use the directory suited for docker container.
     vagrantfile_dir: "/root/vagrant/infraci"
+    # Skip in case of running on Docker.
+    run_install_kernel_devel: false
   roles:
     - diskspace
     - pkginstall

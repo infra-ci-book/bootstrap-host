@@ -1,3 +1,4 @@
 ---
 virtualbox_pkgname: "VirtualBox-5.2"
 virtualbox_version: "latest"
+run_install_kernel_devel: true
