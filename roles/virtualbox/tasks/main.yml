@@ -1,6 +1,6 @@
 ---
 - name: checking virtualbox is installed or not
-  shell: which virtualbox
+  command: which virtualbox
   register: result
   changed_when: False
   ignore_errors: True
@@ -13,7 +13,7 @@
       dest: /etc/yum.repos.d/virtualbox.repo
 
   - name: cleanup repo caches
-    shell: |
+    command: |
       yum clean all
       yum repolist
 
@@ -40,6 +40,6 @@
       state: "{{ virtualbox_version }}"
 
   - name: initialize virtualbox
-    shell: /sbin/vboxconfig
+    command: /sbin/vboxconfig
 
   when: result | failed
