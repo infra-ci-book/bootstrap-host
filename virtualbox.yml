@@ -1,5 +1,5 @@
 ---
-- name: install virtualbox
+- name: Install Virtualbox
   gather_facts: False
   hosts: "vagrant"
   become: True
