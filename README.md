@@ -20,7 +20,7 @@ CentOS:
 
 ```
 yum -y update
-yum -y install ansible
+yum -y install ansible git
 reboot
 ```
 
