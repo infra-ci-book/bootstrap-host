@@ -72,7 +72,7 @@ CentOS.
 ```
 git clone https://github.com/infra-ci-book/bootstrap-host.git
 cd bootstrap-host
-ansible-playbook -i hosts/vagrant site.yml
+ansible-playbook site.yml
 ```
 
 ## License
