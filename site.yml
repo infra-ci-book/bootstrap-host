@@ -1,6 +1,6 @@
 ---
 - import_playbook: diskspace.yml
-- import_playbook: pkginstall.yml
+- import_playbook: preset.yml
 - import_playbook: virtualbox.yml
 - import_playbook: vagrant.yml
 - import_playbook: vagrantfile.yml

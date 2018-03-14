@@ -20,3 +20,8 @@
     enabled: no
   when: service_status.stat.exists
 
+- name: Generate SSH keys
+  shell: ssh-keygen -b 2048 -t rsa -f {{ ssh_keypair_dir }}/id_rsa -q -N ""
+  args:
+    creates: {{ ssh_keypair_dir }}/id_rsa
+
