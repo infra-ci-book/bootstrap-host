@@ -4,3 +4,4 @@
 - import_playbook: virtualbox.yml
 - import_playbook: vagrant.yml
 - import_playbook: vagrantfile.yml
+- import_playbook: instance.yml
