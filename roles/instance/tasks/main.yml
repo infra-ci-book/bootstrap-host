@@ -1,6 +1,8 @@
 ---
-- name: 'vagrant {{ instance_status[instance_action] }} {{ instance_name }}'
-  shell: 'test "{{ instance_status[instance_action] }}" = "up" && vagrant {{ instance_status[instance_action] }} {{ instance_name }} || vagrant {{ instance_status[instance_action] }} -f {{ instance_name }}'
+#- name: 'vagrant {{ instance_status[instance_action] }} {{ instance_name }}'
+#  shell: 'test "{{ instance_status[instance_action] }}" = "up" && vagrant {{ instance_status[instance_action] }} {{ instance_name }} || vagrant {{ instance_status[instance_action] }} -f {{ instance_name }}'
+- name: 'vagrant {{ instance_status[instance_action] }}'
+  shell: 'test "{{ instance_status[instance_action] }}" = "up" && vagrant {{ instance_status[instance_action] }} || vagrant {{ instance_status[instance_action] }} -f'
   args:
     chdir: '{{ vagrantfile_dir }}'
   when: 'instance_action in instance_status'
