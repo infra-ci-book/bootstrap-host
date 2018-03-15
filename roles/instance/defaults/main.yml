@@ -1,0 +1,7 @@
+---
+vagrantfile_dir: "~/vagrant/infraci"
+
+instance_status:
+  start: 'up'
+  stop: 'halt'
+  terminate: 'destroy'

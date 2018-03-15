@@ -1,0 +1,16 @@
+---
+- name: Manage server instance
+  gather_facts: False
+  hosts: "vagrant"
+  vars:
+    instance_action: "start"
+    instance_name: "{{ item }}"
+  with_items:
+    - gitlab
+    - gitlab-runner
+    - ketchup
+    - ketchup-nginx
+    - test-ketchup
+    - test-ketchup-nginx
+  roles:
+    - instance
