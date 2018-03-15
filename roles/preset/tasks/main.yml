@@ -20,3 +20,13 @@
     enabled: no
   when: service_status.stat.exists
 
+- name: Install openssh package
+  yum:
+    name: openssh
+    state: present
+
+- name: Generate SSH keys
+  shell: ssh-keygen -b 2048 -t rsa -f {{ ssh_keypair_dir }}/{{ ssh_key }} -q -N ""
+  args:
+    creates: "{{ ssh_keypair_dir }}/{{ ssh_key }}"
+

@@ -4,6 +4,9 @@
 [vagrant:vars]
 ansible_connection=local
 
+ssh_keypair_dir="~/.ssh"
+ssh_key="infraci"
+
 # Define Vagrant version
 vagrant_version="2.0.1"
 vagrant_checksum_sha256="df28c4ba7420dc6983955cf3af66dddddd892ad852154e9b9dbcd1acbebc083c"

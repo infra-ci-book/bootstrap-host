@@ -11,7 +11,7 @@
     run_install_kernel_devel: false
   roles:
     - diskspace
-    - pkginstall
+    - preset
     - virtualbox
     - vagrant
     - vagrantfile

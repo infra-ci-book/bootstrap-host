@@ -4,5 +4,5 @@
   hosts: "vagrant"
   become: True
   roles:
-    - pkginstall
+    - preset
 
