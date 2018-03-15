@@ -19,15 +19,16 @@
 
   - name: Install dependency packages
     yum:
-      name: "{{ item.name }}"
-      state: "{{ item.state }}"
+      name: "{{ item }}"
+      state: latest
+    register: install_packages
+    until: install_packages|success
+    retries: 5
+    delay: 2
     with_items:
-      - name: gcc
-        state: latest
-      - name: make
-        state: latest
-      - name: kernel-headers
-        state: latest
+      - gcc
+      - make
+      - kernel-headers
 
   - name: Install additional packages
     shell: yum install -y kernel-devel-`uname -r`
