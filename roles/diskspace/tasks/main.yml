@@ -16,6 +16,8 @@
       - ('vmx' in cpuinfo_contents.stdout) or
         ('svm' in cpuinfo_contents.stdout)
     msg: "CPU has to support Intel VT-x or AMD SVM"
+  when:
+    - check_cpuinfo
 
 - name: Identify the space available in /
   # NOTE: df does not work reliably on btrfs filesystems

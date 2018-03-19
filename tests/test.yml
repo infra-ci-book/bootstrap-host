@@ -8,6 +8,7 @@
     # Use the directory suited for docker container.
     vagrantfile_dir: "/root/vagrant/infraci"
     # Skip in case of running on Docker.
+    check_cpuinfo: false
     run_install_kernel_devel: false
   roles:
     - diskspace
