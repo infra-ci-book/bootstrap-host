@@ -13,7 +13,8 @@
 - name: Check for the virt type
   assert:
     that:
-      (cpuinfo_contents.stdout.find('vmx') != -1 or cpuinfo_contents.stdout.find('svm') != -1)
+      'vmx' in cpuinfo_contents
+      or 'svm' in cpuinfo_contents
 
 - name: Identify the space available in /
   # NOTE: df does not work reliably on btrfs filesystems
