@@ -8,9 +8,13 @@
 - name: Get CPU info content and check the virt type
   command: cat /proc/cpuinfo
   register: cpuinfo_contents
-  when:
-    cpuinfo_contents.stdout.find('vmx') != -1
-    or cpuinfo_contents.stdout.find('svm') != -1
+  changed_when: false
+
+- name: Check the virt type
+  assert:
+    that:
+      "'vmx' in cpuinfo_contents.stdout" or "'svm' in cpuinfo_contents.stdout"
+    msg: "CPU has to support Intel VT-x or AMD SVM"
 
 - name: Identify the space available in /
   # NOTE: df does not work reliably on btrfs filesystems
