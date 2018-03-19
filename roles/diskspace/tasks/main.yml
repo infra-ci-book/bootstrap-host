@@ -13,7 +13,8 @@
 - name: Check the virt type
   assert:
     that:
-      "'vmx' in cpuinfo_contents.stdout" or "'svm' in cpuinfo_contents.stdout"
+      - 'vmx' in cpuinfo_contents.stdout or
+        'svm' in cpuinfo_contents.stdout
     msg: "CPU has to support Intel VT-x or AMD SVM"
 
 - name: Identify the space available in /
