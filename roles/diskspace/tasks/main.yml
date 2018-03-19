@@ -5,16 +5,12 @@
       (ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7')
     msg: "The only supported platforms is CentOS 7 (WIP)"
 
-- name: Get CPU info content and store as var
+- name: Get CPU info content and check the virt type
   command: cat /proc/cpuinfo
   register: cpuinfo_contents
-  changed_when: false
-
-- name: Check for the virt type
-  assert:
-    that:
-      'vmx' in cpuinfo_contents.stdout
-      or 'svm' in cpuinfo_contents.stdout
+  when:
+    cpuinfo_contents.stdout.find('vmx') != -1
+    or cpuinfo_contents.stdout.find('svm') != -1
 
 - name: Identify the space available in /
   # NOTE: df does not work reliably on btrfs filesystems
