@@ -33,7 +33,7 @@
   - name: Install additional packages
     shell: yum install -y kernel-devel-`uname -r`
     when:
-    - run_install_kernel_devel
+      - run_install_kernel_devel
 
   - name: Install VirtualBox
     yum:
