@@ -15,7 +15,7 @@
     that:
       - ('vmx' in cpuinfo_contents.stdout) or
         ('svm' in cpuinfo_contents.stdout)
-        msg: "CPU has to support Intel VT-x or AMD-V"
+    msg: "CPU has to support Intel VT-x or AMD-V"
   when:
     - check_cpuinfo
 
