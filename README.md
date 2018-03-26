@@ -32,7 +32,7 @@ If the storage capacity on this device is greater than or equal to this
 size (in GB), the bootstrap process will use it.
 
 ```
-bootstrap_host_data_disk_min_size: 20
+bootstrap_host_data_disk_min_size: 50
 ```
 
 Vagrant default version and download directory detail.
