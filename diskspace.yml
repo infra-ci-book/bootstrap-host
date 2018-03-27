@@ -2,7 +2,7 @@
 - name: Check available disk space
   gather_facts: True
   hosts: "vagrant"
-  become: False
+  become: True
   roles:
     - diskspace
 
