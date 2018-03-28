@@ -11,7 +11,7 @@ Install base dependencies:
 
 Requirements:
 
-- Ansible >= 2.4.0.0
+- Ansible >= 2.4.2.0
 - CentOS >= 7.4
 
 ----
@@ -20,7 +20,9 @@ CentOS:
 
 ```
 yum -y update
-yum -y install ansible git
+curl -o setup.sh https://raw.githubusercontent.com/infra-ci-book/bootstrap-host/master/setup.sh
+chmod +x setup.sh
+sh setup.sh
 reboot
 ```
 
