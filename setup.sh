@@ -39,7 +39,7 @@ yum -y update
 
 # Check git is installed or not
 if [ -n "$(which git)" ]; then
-  echo "INFO: Git is already installed." 1>&2
+  echo "INFO: Git is already installed."
 else
   ## Install Git
   yum -y install git
@@ -49,19 +49,19 @@ fi
 # Check ansible is installed or not
 if [ -n "$(which ansible-playbook)" ]; then
   INSTALLED_ANSIBLE_VERSION=$(ansible --version | awk 'NR==1' | awk -F' ' '{print $2}')
-  echo "INFO: Ansible $INSTALLED_ANSIBLE_VERSION is already installed." 1>&2
+  echo "INFO: Ansible ${INSTALLED_ANSIBLE_VERSION} is already installed."
   echo ""
-  echo "INFO: Installed Ansible version:          $INSTALLED_ANSIBLE_VERSION" 1>&2
-  echo "INFO: Target Ansible version we expected: $ANSIBLE_VERSION" 1>&2
+  echo "INFO: Installed Ansible version:          ${INSTALLED_ANSIBLE_VERSION}"
+  echo "INFO: Target Ansible version we expected: ${ANSIBLE_VERSION}"
   echo ""
-  if [ $INSTALLED_ANSIBLE_VERSION != $ANSIBLE_VERSION ]; then
-    echo "WARN: Installed Ansible version does not equal to $ANSIBLE_VERSION," 1>&2
-    echo "WARN: please uninstall Ansible at once and execute this script again." 1>&2
+  if [ ${INSTALLED_ANSIBLE_VERSION} != ${ANSIBLE_VERSION} ]; then
+    echo "WARN: Installed Ansible version does not equal to ${ANSIBLE_VERSION}." 1>&2
+    echo "WARN: Please uninstall Ansible at once and execute this script again." 1>&2
     exit 1
   fi
 else
   # Install Ansible
-  yum -y install ansible-$ANSIBLE_VERSION
+  yum -y install ansible-${ANSIBLE_VERSION}
   echo "Ansible has been successfully installed."
 fi
 
