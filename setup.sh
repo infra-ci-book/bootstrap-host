@@ -62,6 +62,6 @@ if [ -n "$(which ansible-playbook)" ]; then
 else
   # Install Ansible
   yum -y install ansible-${ANSIBLE_VERSION}
-  echo "Ansible has been successfully installed."
+  echo "INFO: Ansible has been successfully installed."
 fi
 
