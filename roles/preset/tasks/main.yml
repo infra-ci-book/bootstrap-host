@@ -20,13 +20,21 @@
     enabled: no
   when: service_status.stat.exists
 
-- name: Install openssh package
+- name: Install packages
   yum:
-    name: openssh
+    name: "{{ item }}"
     state: present
+  with_items:
+    - openssh
+    - vim
 
 - name: Generate SSH keys
   shell: ssh-keygen -b 2048 -t rsa -f {{ ssh_keypair_dir }}/{{ ssh_key }} -q -N ""
   args:
     creates: "{{ ssh_keypair_dir }}/{{ ssh_key }}"
+
+- name: Put .vimrc to /root
+  copy:
+    src: vimrc
+    dest: /root/.vimrc
 
