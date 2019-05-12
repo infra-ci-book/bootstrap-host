@@ -4,6 +4,7 @@ set -e
 
 ANSIBLE_VERSION="2.4.2.0"
 ANSIBLE_LINT_VERSION="3.4.21"
+ANSIBLE_LINT_RPM="https://github.com/infra-ci-book/support/raw/master/obsoleted/ansible-lint-3.4.21-1.el7.centos.noarch.rpm"
 
 yum_makecache_retry() {
   tries=0
@@ -84,7 +85,7 @@ if [ -n "$(which ansible-lint)" ]; then
   fi
 else
   # Install Ansible Lint
-  yum -y install ansible-lint-${ANSIBLE_LINT_VERSION}
+  yum -y install ${ANSIBLE_LINT_RPM}
   echo "INFO: Ansible Lint has been successfully installed."
 fi
 
