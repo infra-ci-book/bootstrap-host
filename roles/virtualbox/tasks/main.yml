@@ -38,6 +38,7 @@
   - name: Install VirtualBox
     yum:
       name: "{{ virtualbox_pkgname }}"
+      enablerepo: virtualbox
       state: "{{ virtualbox_version }}"
 
   - name: Initialize VirtualBox
