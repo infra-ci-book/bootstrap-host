@@ -3,6 +3,7 @@
 set -e
 
 ANSIBLE_VERSION="2.4.2.0"
+ANSIBLE_RPM="https://github.com/infra-ci-book/support/raw/master/obsoleted/ansible-2.4.2.0-2.el7.noarch.rpm"
 ANSIBLE_LINT_VERSION="3.4.21"
 ANSIBLE_LINT_RPM="https://github.com/infra-ci-book/support/raw/master/obsoleted/ansible-lint-3.4.21-1.el7.centos.noarch.rpm"
 
@@ -66,7 +67,7 @@ if [ -n "$(which ansible-playbook)" ]; then
   fi
 else
   # Install Ansible
-  yum -y install ansible-${ANSIBLE_VERSION}
+  yum -y install ${ANSIBLE_RPM}
   echo "INFO: Ansible has been successfully installed."
 fi
 
